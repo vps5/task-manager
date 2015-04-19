@@ -1,0 +1,58 @@
+<%= form_for @project, :html => { :class => "form-horizontal project" } do |f| %>
+
+    <% if @project.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'form-control' %>
+    </div>
+    <%= error_span(@project[:description]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :active, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :active, :class => 'form-control' %>
+    </div>
+    <%= error_span(@project[:active]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :completed, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :completed, :class => 'form-control' %>
+    </div>
+    <%= error_span(@project[:completed]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :soft_deadline, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_field :soft_deadline, :class => 'form-control' %>
+    </div>
+    <%= error_span(@project[:soft_deadline]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :hard_deadline, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :hard_deadline, :class => 'form-control' %>
+    </div>
+    <%= error_span(@project[:hard_deadline]) %>
+  </div>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            projects_path, :class => 'btn btn-default' %>
+
+<% end %>
