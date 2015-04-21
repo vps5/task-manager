@@ -16,6 +16,9 @@ en:
       destroy: "Delete"
       new: "New"
       edit: "Edit"
+      destroy_project: "Delete project"
+      edit_project: "Edit project"
+      add_task: "Add task"
     titles:
       edit: "Edit %{model}"
       save: "Save %{model}"
